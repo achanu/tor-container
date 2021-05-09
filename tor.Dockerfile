@@ -35,15 +35,3 @@ USER toranon
 CMD ["/usr/bin/tor", "--runasdaemon", "0", "--defaults-torrc", "/usr/share/tor/defaults-torrc", "-f", "/etc/tor/torrc"]
 
 VOLUME /var/lib/tor/hidden_service
-
-
-FROM registry.chanu.info/ubi8-ce:latest
-LABEL maintainer="Alexandre Chanu <alexandre.chanu@gmail.com>"
-
-RUN \
-  dnf install -y \
-    --enablerepo="epel" \
-    tor \
-  && \
-  rm -rf /var/cache/dnf && \
-  rm -rf /var/log/*.log && \
